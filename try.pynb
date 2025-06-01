@@ -1,0 +1,19 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a 10x10 tissue sample with random healthy (0) and damaged (1) cells
+np.random.seed(42)  # For reproducibility
+tissue_sample = np.random.choice([0, 1], size=(10, 10), p=[0.8, 0.2])  # 80% healthy, 20% damaged
+
+# Create a color map: green for healthy (0), red for damaged (1)
+cmap = plt.cm.get_cmap('RdYlGn_r', 2)  # Reverse colormap to make 0 green and 1 red
+
+# Plotting the tissue sample
+plt.figure(figsize=(6, 6))
+plt.imshow(tissue_sample, cmap=cmap, vmin=0, vmax=1)
+plt.colorbar(ticks=[0, 1], label='Cell Health')
+plt.title('Tissue Sample Visualization')
+plt.xticks([])
+plt.yticks([])
+plt.grid(False)
+plt.show()
